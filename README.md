@@ -1,51 +1,49 @@
-# Octave control package
+# Octave 控制系统工具箱
 
-This is the official repository for the control package for GNU Octave.
+这是GNU Octave官方控制系统工具箱的代码仓库，本人汉化。
+## 项目简介
 
-## About
+**控制系统工具箱**是用于控制系统设计与分析的函数集合。
 
-The **control** package is a collection of functions for control systems design and analysis. 
+自2023年3月24日起，该工具箱的开发已从[SourceForge](https://sourceforge.net/p/octave/control/ci/default/tree/)平台和[Mercurial](https://en.wikipedia.org/wiki/Mercurial) 迁移至 [GitHub](https://github.com/gnu-octave/pkg-control)和[Git](https://en.wikipedia.org/wiki/Git)。
 
-As of 24.03.2023, the developemnt of the **control** package was moved from [SourceForge](https://sourceforge.net/p/octave/control/ci/default/tree/) and [Mercurial](https://en.wikipedia.org/wiki/Mercurial) to [GitHub](https://github.com/gnu-octave/pkg-control) and [Git](https://en.wikipedia.org/wiki/Git). Links related to the control package
+相关链接：
+- [版权许可信息](https://github.com/gnu-octave/pkg-control/blob/main/COPYING)
+- [版本发布](https://github.com/gnu-octave/pkg-control/releases)
+- [文档](https://gnu-octave.github.io/pkg-control)
 
-- [License and copyright information](https://github.com/gnu-octave/pkg-control/blob/main/COPYING)
-- [Releases](https://github.com/gnu-octave/pkg-control/releases)
-- [Documentation](https://gnu-octave.github.io/pkg-control)
+## SLICOT库的使用
 
-## Used Library SLICOT
+本工具箱使用了[SLICOT-Reference库](https://github.com/SLICOT/SLICOT-Reference)（版权所有 (c) 2020, SLICOT）中的部分例程。这些例程的源代码已包含在发布的`control-x.y.z.tar.gz`压缩包的`src/slicot-src`目录中，在安装过程中会针对目标系统进行编译。
 
-Control uses some routines of the [SLICOT-Reference library](https://github.com/SLICOT/SLICOT-Reference) (Copyright (c) 2020, SLICOT). The sources of the used routines are included in the released control package archive `control-x.y.z.tar.gz` in the directory `src/slicot-src` and are compiled for the target system while installing the control package for Octave.
+SLICOT文件遵循*BSD 3-Clause License*，您可以通过以下方式查看：
 
-The SLICOT files are available under the *BSD 3-Clause License* which can be found
+- 在`control-x.y.z.tar.gz`压缩包的`src/slicot-src/LICENSE`文件中（附有README说明）
+- 在安装目录的`doc/SLICOT/LICENSE`文件中（附有README说明）
+- 或在 [SLICOT-Reference代码库](https://github.com/SLICOT/SLICOT-Reference/blob/main/LICENSE)中查看。
 
-- in the file `src/slicot-src/LICENSE` (together with README files) in the package archive `control-x.y.z.tar.gz`,
-- in the file `doc/SLICOT/LICENSE` (together with README files) in the package installation directory, or
-- in the [SLICOT-Reference repository](https://github.com/SLICOT/SLICOT-Reference/blob/main/LICENSE).
+## 安装控制系统工具箱
 
+###安装正式发布版本
 
-## Installing the control package
-
-### Installing released package version
-
-The easiest way to install the newest control package is to type
+最简单的安装方式是执行命令：
 
   `pkg install -forge control`
 
-Alternatively, you may download the package archive file `control-x.y.z.tar.gz` of one of the [releases](https://github.com/gnu-octave/pkg-control/releases) and install it by typing
+您也可以从[发布页面](https://github.com/gnu-octave/pkg-control/releases)下载`control-x.y.z.tar.gz`压缩包后执行：
 
   `pkg install control-x.y.z.tar.gz`
 
-### Creating and installing package archives 
+### 手动构建安装包
 
-You can also clone this repository (using the option `--recurse-submodules` since SLICOT is included as git submodule) and build the package archive file by yourself. For this, you can use the following commands:
-
+您也可以克隆此代码库（由于包含SLICOT作为git子模块，需使用`--recurse-submodules`选项），然后自行构建软件包归档文件。具体可使用以下命令：
 - `make dist`<br>
-  Create the package archive file in the directory `target` which can be installed in Octave afterwards
+  在`target`目录下创建可供Octave后续安装的软件包归档文件
 - `make install`<br>
-  Install the package
+  安装该软件包
 - `make help`<br>
-  Show all targets for `make`
+  显示`make`的所有可用目标
 
-## Contributing to the control package
+## 参与贡献
 
-Information on how to contribute to the control package can be found in [this document](CONTRIBUTING.md).
+关于如何参与control软件包开发的贡献指南，请参阅[文档](CONTRIBUTING.md)。

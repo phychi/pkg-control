@@ -1,25 +1,24 @@
-# How to Contribute
+# 如何贡献
 
-## Ways to contribute
+## 贡献方式
 
-There are many ways to help improving the **control** package for GNU Octave.
+有多种方式可以帮助改进GNU Octave的**control**扩展包。
 
-### Improving the documentation
+### 完善文档
 
-If you find a function or feature with missing, erroneous, incomplete or incomprehensible help text, you can help us by contributing changes to address the issues. For writing help texts using the [Texinfo](https://www.gnu.org/software/texinfo/) format, please refer to [License and Documentation](#license-and-documentation).
+如果您发现某个函数或功能的帮助文本存在缺失、错误、不完整或难以理解的情况，可以通过提交修改来帮助我们解决问题。关于使用[Texinfo](https://www.gnu.org/software/texinfo/)格式编写帮助文本，请参阅[许可与文档](#许可与文档)部分。
 
-### Reporting and/or fixing bugs
+### 报告与修复错误
 
-Bugs and feature requests for GNU Octave including the packages are tracked on [Github](https://github.com/gnu-octave/pkg-control/issues). Please feel free to start working on a fix or to help by testing. Patches for fixing the bug can be attached to a comment to the issue or - preferably - by opening a pull request in the package's repository (see [Contribution Workflow](#contribution-workflow)). If you would like to report a new bug, please go over existing bugs before in order to avoid duplicate reports.
+GNU Octave及其扩展包的缺陷和功能请求都在[Github](https://github.com/gnu-octave/pkg-control/issues)上跟踪。欢迎您着手修复问题或协助测试。修复补丁可以附加在问题评论中，或者更推荐的方式是在扩展包仓库中发起拉取请求（参见[贡献流程](#贡献流程)）。如需报告新错误，请先查阅现有问题以避免重复提交。
 
-### Discussions
+### 参与讨论
 
-If you have any questions or suggestions on how to extend or improve the package, please feel free to participate the community on 
-[GNU Octave Discourse](https://octave.discourse.group/).
+如有任何关于扩展包改进或扩展的问题建议，欢迎加入[GNU Octave社区论坛](https://octave.discourse.group/)的讨论。
 
-## License and Documentation
+## 许可与文档
 
-The **control** package is distributed under [GNU General Public License (GPL)](https://www.gnu.org/licenses/gpl-3.0.en.html) (except for the used SLICOT files). If you are submitting a few function, it should be licensed under GPLv3+ with the following header (use appropriate year, name, etc.) as shown below:
+**control**扩展包遵循[GNU General Public License (GPL)](https://www.gnu.org/licenses/gpl-3.0.en.html)分发（使用的SLICOT文件除外）。提交新函数时需包含以下GPLv3+许可声明（请替换具体年份、姓名等信息）：
 
 ```bash
 ## Copyright (C) YEAR NAME <E-MAIL>
@@ -42,7 +41,7 @@ The **control** package is distributed under [GNU General Public License (GPL)](
 
 ```
 
-New functions or features should be properly documented with the embedded help file in [Texinfo](https://www.gnu.org/software/texinfo/) format. This part should be placed outside (before) the function's main body and after the License block. The Texinfo manual can be found [here](https://www.gnu.org/software/texinfo/manual/texinfo/) although reading through existing function files should do the trick.
+新函数或功能应使用[Texinfo](https://www.gnu.org/software/texinfo/)格式编写嵌入式帮助文档。该部分应置于函数主体之外（之前），且位于许可声明之后。Texinfo手册可参考[此处](https://www.gnu.org/software/texinfo/manual/texinfo/)，但阅读现有函数文件也能快速掌握格式要求。
 
 ```bash
 ## -*- texinfo -*-
@@ -53,22 +52,19 @@ New functions or features should be properly documented with the embedded help f
 ## @end deftypefn
 ```
 
-The texinfo is not printed on the command window screen as it appears in the source file.
+Texinfo内容不会直接显示在命令窗口中。
 
+## 编码规范
 
-## Coding style
+### 通用规则
 
-### General rules
+应遵循[GNU OctaveWiki](https://wiki.octave.org/Octave_style_guide)中的通用编码规范，并补充以下要求：
+- 单行长度不超过80个字符
+- 使用`LF`（Unix）换行符，而非`CRLF`（Windows）
 
-The general coding style for GNU Octave given in the [GNU Octave Wiki](https://wiki.octave.org/Octave_style_guide) should be used with the following additions:
+### 测试
 
-- Limit the line length to 80 characters
-- Use `LF` (unix) for end of lines, and NOT `CRLF` (windows)
-
-
-### Tests
-
-It is very helpful that function files contain tests for correct output. The tests are located at the end of the file with lines beginning with `%!`. As example, please finde a test for `pzmap ()` below.
+建议在函数文件末尾添加测试用例，测试行以`%!`开头。以下是`pzmap()`的测试示例：
 
 ```
 %!test
@@ -79,15 +75,15 @@ It is very helpful that function files contain tests for correct output. The tes
 %! assert(zer, 1, eps);
 ```
 
-### Demos
+### 演示案例
 
-Although examples of using a function should already be provided in the documentation, it is always useful to have examples embedded as demos, which the user can invoke with the `demo` command.
+虽然函数文档中应包含使用示例，但嵌入可交互的演示案例也很有价值，用户可通过`demo`命令调用：
 
 ```
 >> demo pzmap
 ```
 
-Like test, demos are also located at the end of the file. A small demo for `pzmap ()` is shown below.
+演示代码同样置于文件末尾，以下是`pzmap()`的演示示例：
 
 ```
 %!demo
@@ -96,15 +92,26 @@ Like test, demos are also located at the end of the file. A small demo for `pzma
 %! pzmap(g);
 ```
 
-## Contribution Workflow
+## 贡献流程
 
-As in many other open-source projects the usual way to contribute to the control package is to
+与其他开源项目类似，贡献control扩展包的常规流程为：
+1. 复刻代码仓库（fork the repository）
+2. 在复刻的仓库中进行修改（如修复错误或添加新功能）
+3. 向原始仓库发起拉取请求
 
-- fork the repository,
-- make changes, like, e.g., fix a bug or add a new feature in your fork, and
-- send pull requests to the original repository.
+具体操作可参考[Github协作指南](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests)。
 
-Please also refer to this [detailed description on collaborating with pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests).
+### 复刻与构建
+
+首先[复刻](https://github.com/gnu-octave/pkg-control/fork)pkg-control仓库到您的账户，然后克隆该仓库。构建可安装扩展包的方法请参考[README](README.md)文件。
+
+### 发起拉取请求（Pull request）
+
+完成修改后，将变更提交并推送到您复刻的Github仓库（确保复刻仓库是最新状态），然后创建拉取请求。
+
+### 小修改的快捷方式
+
+若变更较小且仅涉及单个文件，可直接在Github网页界面编辑文件，选择"提交更改"并"为此提交创建新分支以发起拉取请求"。
 
 ### Fork and build
 
@@ -117,5 +124,3 @@ When your changes are finished, commit and push the change to your forked reposi
 ### Option for very small changes
 
 If the changes are small and only affect one file, you can make the changes directly in the web interface of Github, select *Commit changes* and *Create a new branch for this commit and start a pull request*.
- 
- 
