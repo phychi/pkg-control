@@ -113,6 +113,8 @@ Texinfo内容不会直接显示在命令窗口中。
 
 若变更较小且仅涉及单个文件，可直接在Github网页界面编辑文件，选择"提交更改"并"为此提交创建新分支以发起拉取请求"。
 
+Your contribution must be an independent work or derived from code that may be released under the terms of the GPL. **Under no circumstances may it be based on code from Matlab or other non-free code that you may have access to view**.
+
 ### Fork and build
 
 [Fork](https://github.com/gnu-octave/pkg-control/fork) the pkg-control repository to your own account and clone the resulting repository. Refer to the [README](README.md) file for information about how to build the package archive which can be installed in GNU Octave.
